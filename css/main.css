@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  background: #f4f4f4;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .general_options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+.main_div {
+  width: 700px; 
+  margin: 0 auto;
+}
+
+.top_panel {
+  position: relative;
+}
+
+.ecowatt {
+  height: 100px; 
+  display: flex; 
+  flex: 1 1 0; 
+  align-items: center; 
+  justify-content: space-around;
+}
+
+.wifi {
+  position: absolute; 
+  right: 5px; 
+  top: 30px;
+}
+
+.main_text {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  margin-bottom: 15px;
+}
+
+.general_options {
+  display: flex; 
+  width: 600px; 
+  margin: 0 auto; 
+  flex: 1 1 0;
+}
+
+.control_panel {
+  color: rgba(0,0,0,0.800000011920929);
+  left: 500px;
+  font-weight: Bold;
+  font-size: 18px;
+  flex: 1 1 0; 
+  justify-content: center;
+}
+
+.serial_number {
+  width: 600px;
+  color: rgba(0,0,0,0.800000011920929);
+  font-weight: Regular;
+  font-size: 16px;
+}
+.main_title {
+  width: 600px;
+  color: rgba(0,0,0,0.800000011920929);
+  top: 181px;
+  font-weight: Bold;
+  font-size: 36px;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+}
+
+.block {
+  width: 340px;
+  height: 97px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex; 
+  flex-direction: column; 
+  margin-bottom: 20px;
+}
+
+.block_title {
+  display: flex; 
+  flex: 1 1 0; 
+  align-items: center;
+}
+
+.block_name {
+  width: 47px;
+  color: rgba(0,0,0,1);
+  font-weight: 500;
+  font-size: 16px;
+  flex: 1 1 0
+}
+.block_contect {
+  border-top: solid;
+  border-color: #DCDCE7;
+  font-weight: Regular;
+  font-size: 14px;
+  flex: 1 1 0; 
+  display: flex; 
+  align-items: center; 
+  padding-left: 8px;
+}
+
+.activation_bottom{
+  width: 340px;
+  height: 50px;
+  background: #FFC700;
+  border-color: #FFC700;
+  border-radius: 8px;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.start_stop_charge {
+  margin-left:10px; 
+  font-family: 'Work Sans'; 
+  font-style: normal; 
+  font-weight: 400; 
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.name {
+  color: #fff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;   
+}
+
+.rectangle {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.rules {
+  height: 100px;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: solid;
+  border-color: #DCDCE7;
+  width: 80%; 
+  margin: auto; 
+  display: flex; 
+  flex: 1 1 0; 
+  align-items: center; 
+  justify-content: space-around;
+}
+
+
+
+
+
