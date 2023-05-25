@@ -10,12 +10,12 @@ body {
   min-height: 100vh;
 }
 
-.main_div {
+.main-div {
   width: 700px; 
   margin: 0 auto;
 }
 
-.top_panel {
+.top-panel {
   position: relative;
 }
 
@@ -53,34 +53,93 @@ body {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.wifi_modal_content {
+.modal-displayed {
+  display: block;
+}
+
+/* Modal Content Wifi */
+.wifi-modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  /* border: 1px solid #888; */
-  /* position: relative; */
+  padding: 15px;
+  border: 1px solid #888; 
+  position: relative;
   max-width: 340px;
-  /* height: 376px; */
   border-radius: 10px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 40px;
-  font-weight: bold;
+.wifi-scan-botton {
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(90deg, #2962FF 0%, #8D47FF 100%);
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: none;
+  margin-top: 15px;
 }
 
-.close:hover,
-.close:focus {
+.wifi-scan-botton:hover,
+.wifi-scan-botton:focus {
+  background: linear-gradient(90deg, #8D47FF 0%,  #2962FF 100%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wifi-settings {
+  border-top: solid;
+  border-color: #DCDCE7;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+input::placeholder {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.wifi-input {
+  width: 100%;
+  height: 40px; 
+  border: 1px solid #2962FF; 
+  border-radius: 10px; 
+  display: flex; 
+  align-items: center; 
+  margin: 15px 0; 
+}
+
+input:focus-visible {
+  outline-color: #2962FF;
+}
+
+.modal-btn {
+  background: none;
+  border: none;
+  color: #8D47FF;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
-.main_text {
+.clic-pannel {
+  display: flex;
+  justify-content: space-between;
+  color: #8D47FF;
+  margin-top: 40px;
+}
+
+/* Modal Content Wifi finish */
+
+.main-text {
   display: flex; 
   flex-direction: column; 
   align-items: center; 
@@ -88,27 +147,27 @@ body {
   margin-bottom: 15px;
 }
 
-.general_options {
+.general-options {
   display: flex; 
   width: 600px; 
   margin: 0 auto; 
   flex: 1 1 0;
 }
 
-.control_panel {
+.control-panel {
   color: rgba(0,0,0,0.800000011920929);
   font-weight: Bold;
   font-size: 18px;
   flex: 1 1 0; 
 }
 
-.serial_number {
+.serial-number {
   width: 600px;
   color: rgba(0,0,0,0.800000011920929);
   font-weight: Regular;
   font-size: 16px;
 }
-.main_title {
+.main-title {
   width: 600px;
   color: rgba(0,0,0,0.800000011920929);
   top: 181px;
@@ -132,30 +191,47 @@ body {
   margin-bottom: 20px;
 }
 
-.block_title {
+.block-title {
   display: flex; 
   align-items: center;
   height: 49px;
 }
 
-.block_name {
+.block-name {
   width: 47px;
   color: rgba(0,0,0,1);
   font-weight: 500;
   font-size: 16px;
   flex: 1 1 0
 }
-.block_contect {
+
+.block-contect {
   border-top: solid;
   border-color: #DCDCE7;
   font-size: 14px;
   flex: 1 1 0; 
   display: flex; 
   align-items: center; 
-  padding-left: 8px;
+  padding: 0 8px;
 }
 
-.activation_bottom{
+.inside_enter_content{
+  margin-left: 10px;
+}
+
+.charging-mode-choose {
+  width: 148px; 
+  height: 40px; 
+  border: 1px solid #2962FF; 
+  border-radius: 10px; 
+  color: rgba(0, 0, 0, 0.4); 
+  display: flex; 
+  align-items: center; 
+  margin: 15px 0; 
+  justify-content: space-between;
+}
+
+.activation-button {
   width: 340px;
   height: 50px;
   background: #FFC700;
@@ -168,7 +244,7 @@ body {
   margin-bottom: 15px;
 }
 
-.start_stop_charge {
+.start-stop-charge {
   margin-left:10px; 
   font-family: 'Work Sans'; 
   font-style: normal; 
@@ -192,7 +268,7 @@ footer {
   height: 2.5rem;         
 }
 
-.ecowatt_bottom {
+.ecowatt-bottom {
   height: 100px; 
   display: flex; 
   flex: 1 1 0; 
@@ -214,7 +290,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .main_title {
+  .main-title {
     width: 100%;
     color: rgba(0,0,0,0.800000011920929);
     top: 181px;
@@ -226,14 +302,14 @@ footer {
     right: 20px;
 }
 
-  .serial_number {
+  .serial-number {
     width: 100%;
     color: rgba(0,0,0,0.800000011920929);
     font-weight: Regular;
     font-size: 16px;
   }
 
-  .general_options {
+  .general-options {
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -241,7 +317,7 @@ footer {
     padding: 0 1.5rem;
   }
 
-  .control_panel {
+  .control-panel {
     padding-bottom: 20px;
 }
 
@@ -249,12 +325,12 @@ footer {
     width: 100%;
   }
 
-  .main_div {
+  .main-div {
     width: auto; 
     padding: 0 auto;
   }
   
-  .activation_bottom {
+  .activation-button {
     width: 100%;
 }
 
@@ -262,7 +338,7 @@ footer {
     height: 0.1rem;         
   }
 
-  .ecowatt_bottom {
+  .ecowatt-bottom {
     height: 100px;
     display: flex;
     flex: 1 1 0;
