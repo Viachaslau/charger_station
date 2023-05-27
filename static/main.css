@@ -38,7 +38,7 @@ body {
   cursor: pointer;
 }
 
-/* The Modal (background) */
+/* The Modals (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -57,11 +57,11 @@ body {
   display: block;
 }
 
-/* Modal Content Wifi */
-.wifi-modal-content {
+/* Modal Content */
+.modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #888; 
   position: relative;
   max-width: 340px;
@@ -86,10 +86,7 @@ body {
 }
 
 .wifi-settings {
-  border-top: solid;
-  border-color: #DCDCE7;
   font-size: 14px;
-  padding: 0 8px;
 }
 
 input::placeholder {
@@ -137,7 +134,42 @@ input:focus-visible {
   margin-top: 40px;
 }
 
-/* Modal Content Wifi finish */
+.charging-settings {
+    font-size: 14px;
+}
+
+.charging-mode {
+  margin-top: 20px;
+}
+
+.modal-icon {
+  margin-right: 8px;
+}
+
+.settings-mode{
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Modal Content finish */
+
+.balance-power {
+  display: flex;
+  align-items: center;
+}
+
+
+.current {
+  padding: 0 8px 8px 8px;
+}
+
+.current-choose {
+  height: 40px;
+  border: 1px solid #2962FF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
 
 .main-text {
   display: flex; 
@@ -195,6 +227,8 @@ input:focus-visible {
   display: flex; 
   align-items: center;
   height: 49px;
+  border-bottom: solid;
+  border-color: #DCDCE7;
 }
 
 .block-name {
@@ -206,29 +240,40 @@ input:focus-visible {
 }
 
 .block-contect {
-  border-top: solid;
-  border-color: #DCDCE7;
   font-size: 14px;
   flex: 1 1 0; 
   display: flex; 
   align-items: center; 
-  padding: 0 8px;
+  padding: 8px;
 }
 
-.inside_enter_content{
-  margin-left: 10px;
+.inside-enter-content{
+  margin: 0 10px;
 }
 
 .charging-mode-choose {
-  width: 148px; 
   height: 40px; 
   border: 1px solid #2962FF; 
   border-radius: 10px; 
-  color: rgba(0, 0, 0, 0.4); 
   display: flex; 
   align-items: center; 
-  margin: 15px 0; 
   justify-content: space-between;
+}
+
+.charging-mode-choose:hover,
+.charging-mode-choose:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.current-choose:hover,
+.current-choose:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden-charging-option {
+  display: none;
 }
 
 .activation-button {
@@ -242,6 +287,12 @@ input:focus-visible {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+}
+
+.activation-button:hover,
+.activation-button:focus {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .start-stop-charge {

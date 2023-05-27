@@ -65,6 +65,9 @@
         <div class="serial-number">
             Serial number: 0001_E2BAD6
         </div>
+        <div class="serial-number">
+            Car status connection: not connected
+        </div>
     </div>
 
     <div class="general-options">
@@ -78,7 +81,7 @@
                 <div>10</div>
             </div>
             <div class="option">
-                <div>Time:</div>
+                <div>Charging time:</div>
                 <div>10</div>
             </div>
             <div class="option">
@@ -115,13 +118,31 @@
                 </div>
                 <div class="block-contect">
                     <div style="margin-right: 8px;">Charging:</div> 
-                <div class="charging-mode-choose">
-                    <div class="inside_enter_content">choose mode</div>
-                    <svg style="margin-right: 10px;" width="10" height="7" viewBox="0 0 10 7" fill="none">
-                        <path d="M1 0.999985L5 4.99998L9 0.999985" stroke="#999AAD" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg> 
-                </div> 
+                    <div class="charging-mode-choose" id="chargingModeBtn">
+                        <div class="inside-enter-content" id="chosen-charging-mode"></div>
+                    </div> 
                 </div>
+
+                <!-- Choose current -->
+                <div class="block-contect hidden-block" id="constant-power-mode" style="padding: 0 8px 8px 8px;">
+                    <div style="margin-right: 8px;">Max output current:</div> 
+                    <div class="current-choose" id="currentSetupModeBtn">
+                        <div class="inside-enter-content" id="chosen-max-current-mode"></div>   
+                    </div> 
+                    <label style="padding-left: 10px;">A / phase</label>
+                </div>
+                <!-- Finish -->
+
+                <!-- Balance power -->
+                <div class="block-contect hidden-block" id="balance-charging-mode" style="padding: 0 8px 8px 8px;">
+                    <div style="margin-right: 8px;">Max available enegry:</div> 
+                    <div class="balance-power">
+                        <input class="charging-mode-choose balance-energy-input" style="max-width: 45px; padding-left: 10px;">
+                        <label style="padding-left: 10px;">kW</label>
+                    </div> 
+                </div>
+                <!-- Finish -->
+
             </div>
             <div class="block">
                 <div class="block-title">
@@ -135,14 +156,21 @@
                 </div>
                 <div class="block-contect">
                     <div style="margin-right: 8px;">Activation:</div> 
-                <div class="charging-mode-choose" style="width: 179px">
-                    <div class="inside_enter_content">choose activation</div>
-                    <svg style="margin-right: 10px;" width="10" height="7" viewBox="0 0 10 7" fill="none">
-                        <path d="M1 0.999985L5 4.99998L9 0.999985" stroke="#999AAD" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg> 
-                </div> 
+                    <div class="charging-mode-choose" id="activationModeBtn">
+                        <div class="inside-enter-content" id="chosen-activation-mode"></div>
+                    </div> 
                 </div>
+                <!-- Fingerprint settings -->
+                <div class="block-contect hidden-block-fingerprint" id="fingerprint-sensor-mode" style="padding: 0 8px 8px 8px;">
+                    <div style="margin-right: 8px;">Max available enegry:</div> 
+                    <div class="balance-power">
+                        <input class="charging-mode-choose balance-energy-input" style="max-width: 45px; padding-left: 10px;">
+                        <label style="padding-left: 10px;">kW</label>
+                    </div> 
+                </div>
+                <!-- Finish -->
             </div>
+
             <button class="activation-button">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M16 16H2V2H16V16ZM16 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16C0 16.5304 0.210714 17.0391 0.585786 17.4142C0.960859 17.7893 1.46957 18 2 18H16C16.5304 18 17.0391 17.7893 17.4142 17.4142C17.7893 17.0391 18 16.5304 18 16V2C18 1.46957 17.7893 0.960859 17.4142 0.585786C17.0391 0.210714 16.5304 0 16 0ZM7 5V13L12 9L7 5Z" fill="white"/>
@@ -153,14 +181,15 @@
     </div>
 </div>
 
-<!-- The Modal -->
+<!-- Modal contents -->
+
+<!-- The wifi modal -->
 <div id="wifiModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="wifi-modal-content">
-        <!-- <span class="close">&times;</span> -->
+    <!-- Wifi modal content -->
+    <div class="modal-content">
         <div class="block-title">
-            <svg style="margin: 0 8px" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <svg class="modal-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 16.6667H10.0083" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M7.1084 13.425C7.9544 12.824 8.96646 12.501 10.0042 12.501C11.042 12.501 12.0541 12.824 12.9001 13.425" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M4.16675 10.4583C5.81388 9.08639 7.88975 8.3351 10.0334 8.3351C12.1771 8.3351 14.2529 9.08639 15.9001 10.4583" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -176,12 +205,116 @@
             <input style="padding-left: 10px;" placeholder="enter..." class="wifi-input">
             <div class="clic-pannel">
                 <button class="modal-btn submit-btn">SAVE AND RESTART</button>
-                <button class="modal-btn cancel-btn">CANCEL</button>
+                <button class="modal-btn cancel-btn">ClOSE</button>
             </div> 
         </div>
     </div>
+</div>
+<!-- The end of wifi modal -->
 
-</div>  
+<!-- The charging mode modals -->
+<div id="charging-mode-modal" class="modal">
+
+    <!-- Charging mode modal content -->
+    <div class="modal-content">
+        <div class="block-title">
+            <svg class="modal-icon" width="12" height="22" viewBox="0 0 12 22" fill="none">
+                <path d="M5 8.47V10H8.76L7 13.53V12H3.24L5 8.47ZM7 0L0 14H5V22L12 8H7V0Z" fill="#999AAD"/>
+                </svg>
+            <div class="block-name">Charging mode</div>
+        </div>
+        <div class="charging-settings">
+            <div class="charging-mode">
+                <input type="radio" id="constant-power" name="charging-mode" value="constant-power" checked="true" oninput=" displayActiveChargingMode(this.value)">
+                <label for="constant-power">Constant power</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="balance-charge" name="charging-mode" value="balance-charging" oninput=" displayActiveChargingMode(this.value)">
+                <label for="balance-charge">Balance charge</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="solar-charge" name="charging-mode" value="solar-charge" oninput=" displayActiveChargingMode(this.value)">
+                <label for="solar-charge">Solar charge</label><br>
+            </div>
+            <div class="clic-pannel settings-mode">
+                <button class="modal-btn cancel-btn">CLOSE</button>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- The current setup mode modals -->
+<div id="current-setup-mode-modal" class="modal">
+
+    <!-- Current setup mode modal content -->
+    <div class="modal-content">
+        <div class="block-title">
+            <svg class="modal-icon" width="12" height="22" viewBox="0 0 12 22" fill="none">
+                <path d="M5 8.47V10H8.76L7 13.53V12H3.24L5 8.47ZM7 0L0 14H5V22L12 8H7V0Z" fill="#999AAD"/>
+                </svg>
+            <div class="block-name">Max output current A/phase</div>
+        </div>
+        <div class="charging-settings">
+            <div class="charging-mode">
+                <input type="radio" id="6A" name="constant-current" value="6" checked="true" oninput=" displayMaxCurrentMode(this.value)">
+                <label for="6A">6</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="10A" name="constant-current" value="10" oninput=" displayMaxCurrentMode(this.value)">
+                <label for="10A">10</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="13A" name="constant-current" value="13" oninput=" displayMaxCurrentMode(this.value)">
+                <label for="13A">13</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="16A" name="constant-current" value="16" oninput=" displayMaxCurrentMode(this.value)">
+                <label for="16A">16</label><br>
+            </div>
+            <div class="clic-pannel settings-mode">
+                <button class="modal-btn cancel-btn">CLOSE</button>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- The end of charging mode modals -->
+
+<!-- The activation mode modal -->
+<div id="activation-mode-modal" class="modal">
+
+    <!-- Activation mode modal content -->
+    <div class="modal-content">
+        <div class="block-title">
+            <svg class="modal-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M15 17.5C16.3807 17.5 17.5 16.3807 17.5 15C17.5 13.6193 16.3807 12.5 15 12.5C13.6193 12.5 12.5 13.6193 12.5 15C12.5 16.3807 13.6193 17.5 15 17.5Z" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 7.5V17.5" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.8334 5H13.3334C13.7754 5 14.1993 5.17559 14.5119 5.48816C14.8244 5.80072 15 6.22464 15 6.66667V12.5" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 7.5C6.38071 7.5 7.5 6.38071 7.5 5C7.5 3.61929 6.38071 2.5 5 2.5C3.61929 2.5 2.5 3.61929 2.5 5C2.5 6.38071 3.61929 7.5 5 7.5Z" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>   
+            <div class="block-name">Activation mode</div>
+        </div>
+        <div class="charging-settings">
+            <div class="charging-mode">
+                <input type="radio" id="plug-and-charge" name="activation" value="plug-and-charge" checked="true" oninput=" displayActiveActivationMode(this.value)">
+                <label for="plug-and-charge">Plug and charge</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="app-only" name="activation" value="app-only" oninput=" displayActiveActivationMode(this.value)">
+                <label for="app-only">App only</label><br>
+            </div>
+            <div class="charging-mode">
+                <input type="radio" id="fingerprint-sensor" name="activation" value="fingerprint-sensor" oninput=" displayActiveActivationMode(this.value)">
+                <label for="fingerprint-sensor">Fingerprint sensor</label><br>
+            </div>
+            <div class="clic-pannel settings-mode">
+                <button class="modal-btn cancel-btn">ClOSE</button>
+            </div> 
+        </div>
+    </div>
+</div>
+<!-- The end of activation mode modal -->
+
 </body>
 
 <footer>
