@@ -3,19 +3,21 @@ const wifiModal = document.getElementById("wifiModal");
 const chargingModeModal = document.getElementById("charging-mode-modal");
 const activationModeModal = document.getElementById("activation-mode-modal");
 const currentSetupModeModal = document.getElementById("current-setup-mode-modal");
+const fingerprintSettingsModal = document.getElementById("fingerprint-settings-modal");
 
 // Get the button that opens the modal
 const wifiBtn = document.getElementById("wifiBtn");
 const chargingModeBtn = document.getElementById("chargingModeBtn");
 const activationModeBtn = document.getElementById("activationModeBtn");
 const currentSetupModeBtn = document.getElementById("currentSetupModeBtn");
+const fingerprintSettingsBtn = document.getElementById("fingerprintSettingsBtn");
+
 
 // Get the <span> element that closes the modal
 const submitBtn = document.querySelector(".submit-btn");
 const cancelBtns = document.querySelectorAll(".cancel-btn");
 
 // Charging mode choose
-
 const chargingDropIcon = document.querySelectorAll('.hidden-block');
 chargingDropIcon.forEach((option) => {
     option.classList.add('hidden-charging-option');
@@ -64,7 +66,6 @@ function displayMaxCurrentMode(value) {
 }
 
 // Activation mode choose
-
 const activationDropIcon = document.querySelectorAll('.hidden-block-fingerprint');
 activationDropIcon.forEach((option) => {
     option.classList.add('hidden-charging-option');
@@ -117,6 +118,10 @@ activationModeBtn.onclick = function() {
     activationModeModal.classList.add('modal-displayed');
 }
 
+fingerprintSettingsBtn.onclick = function() {
+    fingerprintSettingsModal.classList.add('modal-displayed');
+}
+
 // When the user clicks on <botton> (close), close the modal
 cancelBtns.forEach((cancelBtn) => {
     cancelBtn.onclick = function() {
@@ -124,6 +129,7 @@ cancelBtns.forEach((cancelBtn) => {
         chargingModeModal.classList.remove('modal-displayed');
         currentSetupModeModal.classList.remove('modal-displayed');
         activationModeModal.classList.remove('modal-displayed');
+        fingerprintSettingsModal.classList.remove('modal-displayed');
     }});
 
 
@@ -145,5 +151,8 @@ window.onclick = function(event) {
     }
     if (event.target == activationModeModal) {
         activationModeModal.classList.remove('modal-displayed');
+    }
+    if (event.target == fingerprintSettingsModal) {
+        fingerprintSettingsModal.classList.remove('modal-displayed');
     }
 }

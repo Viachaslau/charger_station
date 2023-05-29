@@ -72,18 +72,13 @@
 
     <div class="general-options">
         <div class="control-panel">
+            <!-- Сигнал со счетчика - окно появляется только тогда когда счетчик подключен -->
             <div class="option">
-                <div>kW: </div>
-                <div>10</div>
+                <div>Power sensor / kW:</div>
+                <div>15</div>
             </div>
-            <div class="option">
-                <div>kWh: </div>
-                <div>10</div>
-            </div>
-            <div class="option">
-                <div>Charging time:</div>
-                <div>10</div>
-            </div>
+            <!-- Стоп -->
+
             <div class="option">
                 <div>Voltage L1/N:</div>
                 <div>220</div>
@@ -96,6 +91,23 @@
                 <div>Voltage L3/N:</div>
                 <div>220</div>
             </div>
+
+            <!-- Параметры заряда - эта часть будет добавляться когда начинается зарядка автомобиля -->
+            <div style="margin-top: 15px;"> 
+                <div class="option">
+                    <div>Power / kW:</div>
+                    <div>10</div>
+                </div>
+                <div class="option">
+                    <div>Energy / kWh:</div>
+                    <div>10</div>
+                </div>
+                <div class="option">
+                    <div>Charging time:</div>
+                    <div>02:35:23</div>
+                </div>
+            </div>
+            <!-- окончание параметров заряда -->
         </div>
     
         <div class="settings">
@@ -159,16 +171,14 @@
                     <div class="charging-mode-choose" id="activationModeBtn">
                         <div class="inside-enter-content" id="chosen-activation-mode"></div>
                     </div> 
+                    <!-- Fingerprint settings -->
+                    <div class="block-contect hidden-block-fingerprint" id="fingerprint-sensor-mode">
+                        <svg class="fingerprint-settings-icon" id="fingerprintSettingsBtn" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                            <path d="M17.478 11.54C17.518 11.24 17.538 10.93 17.538 10.6C17.538 10.28 17.518 9.96 17.468 9.66L19.498 8.08C19.678 7.94 19.728 7.67 19.618 7.47L17.698 4.15C17.578 3.93 17.328 3.86 17.108 3.93L14.718 4.89C14.218 4.51 13.688 4.19 13.098 3.95L12.738 1.41C12.698 1.17 12.498 1 12.258 1H8.418C8.178 1 7.988 1.17 7.948 1.41L7.588 3.95C6.998 4.19 6.458 4.52 5.968 4.89L3.578 3.93C3.358 3.85 3.108 3.93 2.988 4.15L1.078 7.47C0.958 7.68 0.998 7.94 1.198 8.08L3.228 9.66C3.178 9.96 3.138 10.29 3.138 10.6C3.138 10.91 3.158 11.24 3.208 11.54L1.178 13.12C0.998 13.26 0.948 13.53 1.058 13.73L2.978 17.05C3.098 17.27 3.348 17.34 3.568 17.27L5.958 16.31C6.458 16.69 6.988 17.01 7.578 17.25L7.938 19.79C7.988 20.03 8.178 20.2 8.418 20.2H12.258C12.498 20.2 12.698 20.03 12.728 19.79L13.088 17.25C13.678 17.01 14.218 16.69 14.708 16.31L17.098 17.27C17.318 17.35 17.568 17.27 17.688 17.05L19.608 13.73C19.728 13.51 19.678 13.26 19.488 13.12L17.478 11.54ZM10.338 14.2C8.358 14.2 6.738 12.58 6.738 10.6C6.738 8.62 8.358 7 10.338 7C12.318 7 13.938 8.62 13.938 10.6C13.938 12.58 12.318 14.2 10.338 14.2Z" stroke="#999AAD" stroke-width="2"/>
+                        </svg>  
+                    </div>
+                    <!-- Finish -->
                 </div>
-                <!-- Fingerprint settings -->
-                <div class="block-contect hidden-block-fingerprint" id="fingerprint-sensor-mode" style="padding: 0 8px 8px 8px;">
-                    <div style="margin-right: 8px;">Max available enegry:</div> 
-                    <div class="balance-power">
-                        <input class="charging-mode-choose balance-energy-input" style="max-width: 45px; padding-left: 10px;">
-                        <label style="padding-left: 10px;">kW</label>
-                    </div> 
-                </div>
-                <!-- Finish -->
             </div>
 
             <button class="activation-button">
@@ -199,10 +209,58 @@
         </div>
         <div class="wifi-settings">
             <button class="wifi-scan-botton">scan</button>
+            <!-- Сюда должен выпадать список с доступными wifi сигналами -->
+            <ul class="allowed-wifi-list">
+                <div class="wifi-box">
+                    <li class="wifi-item">Home</li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns=>
+                        <path d="M10 16.6667H10.0083" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.10833 13.425C7.95433 12.824 8.96639 12.501 10.0042 12.501C11.0419 12.501 12.054 12.824 12.9 13.425" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.16667 10.4583C5.8138 9.08639 7.88967 8.3351 10.0333 8.3351C12.177 8.3351 14.2529 9.08639 15.9 10.4583" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.18333 7.5C3.61869 5.3533 6.75358 4.16887 10 4.16887C13.2464 4.16887 16.3813 5.3533 18.8167 7.5" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                <div class="wifi-box">
+                    <li class="wifi-item">Work</li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 16.6667H10.0083" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.10833 13.425C7.95433 12.824 8.96639 12.501 10.0042 12.501C11.0419 12.501 12.054 12.824 12.9 13.425" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.16667 10.4583C5.8138 9.08639 7.88967 8.3351 10.0333 8.3351C12.177 8.3351 14.2529 9.08639 15.9 10.4583" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.18333 7.5C3.61869 5.3533 6.75358 4.16887 10 4.16887C13.2464 4.16887 16.3813 5.3533 18.8167 7.5" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                <div class="wifi-box">
+                    <li class="wifi-item">Home-1</li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 16.6667H10.0083" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.10833 13.425C7.95433 12.824 8.96639 12.501 10.0042 12.501C11.0419 12.501 12.054 12.824 12.9 13.425" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.16667 10.4583C5.8138 9.08639 7.88967 8.3351 10.0333 8.3351C12.177 8.3351 14.2529 9.08639 15.9 10.4583" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.18333 7.5C3.61869 5.3533 6.75358 4.16887 10 4.16887C13.2464 4.16887 16.3813 5.3533 18.8167 7.5" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                <div class="wifi-box">
+                    <li class="wifi-item">Work-1</li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 16.6667H10.0083" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.10833 13.425C7.95433 12.824 8.96639 12.501 10.0042 12.501C11.0419 12.501 12.054 12.824 12.9 13.425" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.16667 10.4583C5.8138 9.08639 7.88967 8.3351 10.0333 8.3351C12.177 8.3351 14.2529 9.08639 15.9 10.4583" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.18333 7.5C3.61869 5.3533 6.75358 4.16887 10 4.16887C13.2464 4.16887 16.3813 5.3533 18.8167 7.5" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                <div class="wifi-box">
+                    <li class="wifi-item">Work-2</li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 16.6667H10.0083" stroke="#FFC700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.10833 13.425C7.95433 12.824 8.96639 12.501 10.0042 12.501C11.0419 12.501 12.054 12.824 12.9 13.425" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.16667 10.4583C5.8138 9.08639 7.88967 8.3351 10.0333 8.3351C12.177 8.3351 14.2529 9.08639 15.9 10.4583" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.18333 7.5C3.61869 5.3533 6.75358 4.16887 10 4.16887C13.2464 4.16887 16.3813 5.3533 18.8167 7.5" stroke="#FFC700" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>    
+                </div>
+            </ul> 
             <p>Wi-Fi name:</p>
-            <input style="padding-left: 10px;" placeholder="enter..." class="wifi-input">
+            <input placeholder="enter..." class="input wifi-input" >
             <p>Wi-Fi password:</p>
-            <input style="padding-left: 10px;" placeholder="enter..." class="wifi-input">
+            <input placeholder="enter..." class="input wifi-input">
             <div class="clic-pannel">
                 <button class="modal-btn submit-btn">SAVE AND RESTART</button>
                 <button class="modal-btn cancel-btn">ClOSE</button>
@@ -255,19 +313,19 @@
             <div class="block-name">Max output current A/phase</div>
         </div>
         <div class="charging-settings">
-            <div class="charging-mode">
+            <div class="current-mode">
                 <input type="radio" id="6A" name="constant-current" value="6" checked="true" oninput=" displayMaxCurrentMode(this.value)">
                 <label for="6A">6</label><br>
             </div>
-            <div class="charging-mode">
+            <div class="current-mode">
                 <input type="radio" id="10A" name="constant-current" value="10" oninput=" displayMaxCurrentMode(this.value)">
                 <label for="10A">10</label><br>
             </div>
-            <div class="charging-mode">
+            <div class="current-mode">
                 <input type="radio" id="13A" name="constant-current" value="13" oninput=" displayMaxCurrentMode(this.value)">
                 <label for="13A">13</label><br>
             </div>
-            <div class="charging-mode">
+            <div class="current-mode">
                 <input type="radio" id="16A" name="constant-current" value="16" oninput=" displayMaxCurrentMode(this.value)">
                 <label for="16A">16</label><br>
             </div>
@@ -294,16 +352,16 @@
             </svg>   
             <div class="block-name">Activation mode</div>
         </div>
-        <div class="charging-settings">
-            <div class="charging-mode">
+        <div class="activation-settings">
+            <div class="activation-mode">
                 <input type="radio" id="plug-and-charge" name="activation" value="plug-and-charge" checked="true" oninput=" displayActiveActivationMode(this.value)">
                 <label for="plug-and-charge">Plug and charge</label><br>
             </div>
-            <div class="charging-mode">
+            <div class="activation-mode">
                 <input type="radio" id="app-only" name="activation" value="app-only" oninput=" displayActiveActivationMode(this.value)">
                 <label for="app-only">App only</label><br>
             </div>
-            <div class="charging-mode">
+            <div class="activation-mode">
                 <input type="radio" id="fingerprint-sensor" name="activation" value="fingerprint-sensor" oninput=" displayActiveActivationMode(this.value)">
                 <label for="fingerprint-sensor">Fingerprint sensor</label><br>
             </div>
@@ -314,6 +372,49 @@
     </div>
 </div>
 <!-- The end of activation mode modal -->
+
+<!-- The fingerprint settings modal -->
+<div id="fingerprint-settings-modal" class="modal">
+
+    <!-- Fingerprint settings modal content -->
+    <div class="modal-content">
+        <div class="block-title">
+            <svg class="modal-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M15 17.5C16.3807 17.5 17.5 16.3807 17.5 15C17.5 13.6193 16.3807 12.5 15 12.5C13.6193 12.5 12.5 13.6193 12.5 15C12.5 16.3807 13.6193 17.5 15 17.5Z" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 7.5V17.5" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.8334 5H13.3334C13.7754 5 14.1993 5.17559 14.5119 5.48816C14.8244 5.80072 15 6.22464 15 6.66667V12.5" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 7.5C6.38071 7.5 7.5 6.38071 7.5 5C7.5 3.61929 6.38071 2.5 5 2.5C3.61929 2.5 2.5 3.61929 2.5 5C2.5 6.38071 3.61929 7.5 5 7.5Z" stroke="#999AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>   
+            <div class="block-name">Fingerprint settings</div>
+        </div>
+        <div class="fingerprint-settings">
+            <div class="users-name-list">
+                <input type="radio" id="plug-and-charge" name="activation" value="plug-and-charge" >
+                <label for="plug-and-charge">Roman</label><br>
+                <input type="radio" id="app-only" name="activation" value="app-only">
+                <label for="app-only">Vlad</label><br>
+                <input type="radio" id="fingerprint-sensor" name="activation" value="fingerprint-sensor">
+                <label for="fingerprint-sensor">Vadim</label><br>
+            </div>
+            <button id="remove-user-button">Remove</button>
+            <div class="add-user" style=" border-top: solid; border-color: #DCDCE7;">
+                <p class="user-name-title">Enter user name and click "Add user" button!</p>
+                <div class="add-user-name">
+                    <input placeholder="enter user name..." class="input user-input">
+                    <button id="add-user-button">Add user</button>
+                </div>
+                <p class="user-name-title">Messages from fingerprint</p>
+            </div>
+            <div class="clic-pannel settings-mode">
+                <button class="modal-btn cancel-btn">ClOSE</button>
+            </div> 
+        </div>
+    </div>
+</div>
+<!-- The end of fingerprint settings modal -->
+
+
+<!-- The end modal contents -->
 
 </body>
 

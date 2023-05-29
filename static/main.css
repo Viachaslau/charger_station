@@ -89,6 +89,24 @@ body {
   font-size: 14px;
 }
 
+.allowed-wifi-list {
+  padding: 0;
+  list-style: none;
+}
+
+.wifi-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #DCDCE7;
+}
+
+.wifi-item {
+  font-size: 18px;
+}
+
 input::placeholder {
   font-family: 'Work Sans';
   font-style: normal;
@@ -98,14 +116,22 @@ input::placeholder {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.wifi-input {
-  width: 100%;
+.input {
   height: 40px; 
   border: 1px solid #2962FF; 
   border-radius: 10px; 
   display: flex; 
   align-items: center; 
+  padding-left: 10px;
+}
+
+.wifi-input {
+  width: 100%;
   margin: 15px 0; 
+}
+
+.user-input {
+  width: 50%;
 }
 
 input:focus-visible {
@@ -134,11 +160,11 @@ input:focus-visible {
   margin-top: 40px;
 }
 
-.charging-settings {
+.charging-settings, .activation-settings, .fingerprint-settings {
     font-size: 14px;
 }
 
-.charging-mode {
+.charging-mode, .current-mode, .activation-mode {
   margin-top: 20px;
 }
 
@@ -149,6 +175,35 @@ input:focus-visible {
 .settings-mode{
   display: flex;
   justify-content: flex-end;
+}
+
+.users-name-list {
+  margin-top: 12px;
+}
+
+#remove-user-button {
+  width: 100px;
+  height: 30px;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #FFC700;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+#add-user-button {
+  width: 100px;
+  height: 30px;
+  border-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFC700;
+  border-radius: 10px;
+  color: white;
 }
 
 /* Modal Content finish */
@@ -209,7 +264,8 @@ input:focus-visible {
 
 .option {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 24px;
 }
 
 .block {
@@ -251,6 +307,11 @@ input:focus-visible {
   margin: 0 10px;
 }
 
+.hidden-block-fingerprint {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .charging-mode-choose {
   height: 40px; 
   border: 1px solid #2962FF; 
@@ -260,20 +321,28 @@ input:focus-visible {
   justify-content: space-between;
 }
 
-.charging-mode-choose:hover,
-.charging-mode-choose:focus {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.current-choose:hover,
-.current-choose:focus {
+.charging-mode-choose, .fingerprint-settings-icon, 
+.current-choose, .activation-button,
+#remove-user-button, #add-user-button:hover,
+.charging-mode-choose, .fingerprint-settings-icon,
+.current-choose, .activation-button,
+#remove-user-button, #add-user-button:focus {
   text-decoration: none;
   cursor: pointer;
 }
 
 .hidden-charging-option {
   display: none;
+}
+
+.user-name-title {
+  font-size: 12px;
+}
+
+.add-user-name {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
 }
 
 .activation-button {
@@ -287,12 +356,6 @@ input:focus-visible {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-}
-
-.activation-button:hover,
-.activation-button:focus {
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .start-stop-charge {
@@ -346,7 +409,7 @@ footer {
     color: rgba(0,0,0,0.800000011920929);
     top: 181px;
     font-weight: Bold;
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .wifi {
@@ -409,6 +472,10 @@ footer {
     flex: 1 1 0;
     align-items: center;
     justify-content: left;
+  }
+
+  .option {
+    margin-right: 8px;
   }
 
 }
